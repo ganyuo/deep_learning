@@ -1,7 +1,6 @@
 #--coding:utf-8--
 # 线性回归，使用pytorch的接口实现
 
-import random
 import torch
 import torch.utils.data as data
 from torch import nn

@@ -7,7 +7,7 @@ import torch
 def main():
 
     # 读取数据
-    data = pd.read_csv("01_base/data/house_tiny.csv")
+    data = pd.read_csv("data/house_tiny.csv")
     print(data)
 
     # 数据插值
