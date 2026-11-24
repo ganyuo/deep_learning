@@ -51,6 +51,7 @@ def main():
         for x, y in train_iter:
             trainer.zero_grad()
             y_hat = net(x)
+            # pytorch的交叉熵损失函数已经包含了softmax操作，所以这里不需要再进行softmax操作
             l = loss(y_hat, y).mean()
             l.backward()
             trainer.step()
