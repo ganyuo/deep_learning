@@ -1,5 +1,5 @@
 #--coding:utf-8--
-# 多层感知机，使用pytorch实现
+# 权重衰减
 
 import torch
 import random
