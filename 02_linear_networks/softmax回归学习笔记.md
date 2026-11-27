@@ -21,8 +21,6 @@ comment: true
 | 三、用 PyTorch 接口实现 | `Flatten` + `Linear`、`CrossEntropyLoss`、`optim.SGD`、训练循环 |
 | 四、对比与小结 | 两套实现对比、调参实验、常见坑 |
 
-文中代码按顺序复制即可运行，除了自动下载的数据集外不需要任何外部文件。
-
 ---
 
 # 一、softmax 回归简介

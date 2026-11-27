@@ -323,7 +323,7 @@ def dropout(x, drop_prob):
 2. **`drop_prob == 1` 返回全零**：这个分支其实用不到（全丢弃没有意义），但写上是防御性的，避免除零；
 3. **`torch.rand(...) > drop_prob`**：均匀分布落在 $(p, 1)$ 区间的概率恰好是 $1-p$，所以保留概率就是 $1-p$；用 `>` 还是 `>=` 对连续分布没有区别；
 4. **`.float()`**：布尔张量转成 0/1 浮点，才能和 `x` 相乘；
-5. **`/ (1.0 - drop_prob)`**：inverted dropout 的缩放，保证 $\mathbb{E}[\text{输出}] = \text{输入}$；
+5. **`/ (1.0 - drop_prob)`**：inverted dropout 的缩放，保证使用dropout后的输出期望与使用dropout前相同；
 6. **每次调用都重新生成 `mask`**：这是 dropout 的核心，同一个 batch 里不同层、不同轮次看到的掩码都不一样。
 
 > 一个移植到 GPU 时才会暴露的坑：`torch.rand(x.shape)` 生成的是 **CPU** 张量。模型在 GPU 上时，`mask * x` 会因为设备不一致报错。稳妥写法是 `torch.rand_like(x) > drop_prob`，它自动继承 `x` 的形状、`dtype` 和设备。
